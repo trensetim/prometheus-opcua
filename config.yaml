@@ -1,0 +1,61 @@
+# HTTP Port for Exposing the Prometheus /metrics endpoint
+# httpPort: 8080
+
+# How many samples to keep in a circular buffer queue at most before discarding the oldest
+# bufferSize: 100
+
+# Name of this app for the opc ua server
+# applicationName: "com.timtrense.prometheusopcua"
+
+# URI of this app for the opc ua server
+# applicationUri: "urn:com.timtrense.prometheusopcua"
+
+#url: if discovery and endpoint url are the same, you MAY substitute them
+
+# The URL for the opc ua endpoint discovery query
+discoveryUrl: opc.tcp://myserver:4840
+# The URL for the opc ua endpoint to connect to
+endpointUrl: opc.tcp://myserver:4841
+
+# opc ua encryption mode: either None, Sign or SignAndEncrypt
+# messageSecurityMode: None
+
+# the subscriptions to open on that server
+subscriptions:
+    -
+        # requested interval for sending new values from the opc ua server to here in milliseconds (0 = as fast as possible)
+        # requestedPublishingInterval: 0
+
+        # the list of nodes to monitor via this subscription
+        monitors:
+            -   # the opc ua nodes id
+                identifier: ns=1;s=AGENT.OBJECTS.bildobjekte.Carver_5.rezept_Carver_5.Station_1_Heizen_Man_Auto_Oberplatte
+
+                # the opc ua nodes attribute to monitor for changes
+                # attribute: Value
+
+                # the client handle to assign to this monitor, default = auto assigned
+                # clientHandle: !null
+
+                # the mode for the opc ua server to acquire samples from the underlying data source. either "Reporting", "Sampling" or "Disabled"
+                # monitoringMode: Reporting
+
+                # milliseconds for the opc ua server to sample the original data source
+                # samplingInterval: 100
+
+                # how many samples the opc ua server shall keep while not being able to deliver them here before running out of buffer space
+                # queueSize: 10
+
+                # the opc ua index range to monitor
+                # indexRange: !null
+
+                # whether the opc ua server shall discard the oldest samples if its publishing queue to here is full
+                # discardOldest: true
+
+                # the core name of the prometheus metric. it will be surrounded like "opcua_" + name + ("_" + unit)?
+                # name: "node"
+
+                # the labels to assign to the target prometheus metric. if omitted the label "id" will automatically be assigned to the value of identifier (see above)
+                # label:
+                #    station: 1
+                #    abc: def

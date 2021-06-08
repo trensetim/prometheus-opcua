@@ -1,0 +1,18 @@
+Configuration:
+    name: Default
+    status: warn
+
+    Appenders:
+        Console:
+            name: console
+            target: SYSTEM_OUT
+            PatternLayout: # date thread prio logger - message
+                pattern: "%d %t %p %c - %m%n"
+    Loggers:
+        Root:
+            level: warn
+            AppenderRef:
+                -   ref: console
+        Logger:
+            -   name: com.timtrense
+                level: all
