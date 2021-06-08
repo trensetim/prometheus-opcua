@@ -15,7 +15,10 @@ import org.eclipse.milo.opcua.stack.client.DiscoveryClient;
 import org.eclipse.milo.opcua.stack.core.types.builtin.*;
 import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.UInteger;
 import org.eclipse.milo.opcua.stack.core.types.enumerated.TimestampsToReturn;
-import org.eclipse.milo.opcua.stack.core.types.structured.*;
+import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
+import org.eclipse.milo.opcua.stack.core.types.structured.MonitoredItemCreateRequest;
+import org.eclipse.milo.opcua.stack.core.types.structured.MonitoringParameters;
+import org.eclipse.milo.opcua.stack.core.types.structured.ReadValueId;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
@@ -39,7 +42,7 @@ public class Main {
         log.info( "starting" );
 
         // 0. read configuration
-        String configFile = ( args.length > 0 ? args[0] : "/etc/prometheusopcua.conf.yaml" );
+        String configFile = ( args.length > 0 ? args[0] : "/etc/prometheus-opcua.conf.yaml" );
         Configuration configuration = Configuration.read( configFile );
 
         // 1. prepare the internal buffer

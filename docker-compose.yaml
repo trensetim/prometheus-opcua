@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+    prometheus-opcua:
+        image: trensetim/prometheus-opcua
+        volumes:
+            - ./config.local.yaml:/etc/prometheus-opcua.conf.yaml:ro
+        ports:
+            - 8080:8080

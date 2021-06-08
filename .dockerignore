@@ -1,0 +1,6 @@
+.gitignore
+config.local.yaml
+README.md
+.idea
+.gradle
+src
