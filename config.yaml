@@ -29,7 +29,7 @@ subscriptions:
         # the list of nodes to monitor via this subscription
         monitors:
             -   # the opc ua nodes id
-                identifier: ns=1;s=AGENT.OBJECTS.bildobjekte.Carver_5.rezept_Carver_5.Station_1_Heizen_Man_Auto_Oberplatte
+                identifier: ns=1;s=AGENT.OBJECTS.myMaschine.input.frequency
 
                 # the opc ua nodes attribute to monitor for changes
                 # attribute: Value
@@ -55,7 +55,7 @@ subscriptions:
                 # the core name of the prometheus metric. it will be surrounded like "opcua_" + name + ("_" + unit)?
                 # name: "node"
 
-                # the labels to assign to the target prometheus metric. if omitted the label "id" will automatically be assigned to the value of identifier (see above)
+                # the labels to assign to the target prometheus metric. if given any, the provided defaults must explicitly be added again
                 # label:
-                #    station: 1
-                #    abc: def
+                #    id: ns=1;s=AGENT.OBJECTS.myMaschine.input.frequency
+                #    attribute: Value
